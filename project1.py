@@ -6,13 +6,75 @@ from search import Graph
 def bfs(graph, start, goal):
     # Your Code Here
     raise NotImplementedError
-
+   
 
 # Once you have completed the breadth-first search,
 # this part should be very simple to complete.
 def dfs(graph, start, goal):
+	flag=0
+	print("goal:"+goal)
+	print("start:"+start)
+	visited =[]
+	l= graph.get_connected_nodes(start)
+	for index in range(len(l)):
+		visited.append(l[index])
+		l[index]=l[index]+start
+		
+	while len(l)>0 and flag==0:
+		ind=len(l)-1
+		s=l[ind]
+		l.pop(ind)
+		t=graph.get_connected_nodes(s[0])
+		for index in range(len(t)):
+			if(t[index] not in visited):
+				s=t[index]+s
+				print(s)
+				l.append(s)
+				visited.append(t[index])
+				
+				if s[0]==goal:
+					flag=1
+					print("answer")
+					print(s)
+
+
+
+			
+	
+	exit()	
+
+
+
     # Your Code Here
-    raise NotImplementedError
+     #l= graph.get_connected_nodes(start)
+
+     #while len(l)>0 :
+
+		 #ind = len(l)-1
+		 #s=l[ind]
+	     #s=s+s     	
+		# l.pop(ind)
+     		
+     #	count=len(s)-1
+     #	t = graph.get_connected_nodes(s[0])
+     #	for x in xrange(1,10):
+     #		pass
+     #	for index in range(len(t)):
+  	#		s=t[index] + s
+  	#		print(s)
+  	#		print(type(s))
+    #		 l.append(s)
+
+    	#	  if s[0]=goal:
+    	#	  		flag=true
+
+     	
+  					
+     	  	
+  		  
+  		  
+  		  	
+  		  	
 
 
 # Now we're going to try optimal search.  The previous searches haven't
@@ -22,8 +84,8 @@ def dfs(graph, start, goal):
 # the sum of edge lengths along the path -- the total distance in the path.
 
 def path_length(graph, node_names):
-    # Your Code Here
-    raise NotImplementedError
+    for index in range(len(node_names)):
+  		  print('node:', node_names[index])
 
 
 def uniform_cost_search(graph, start, goal):
